@@ -7,64 +7,52 @@
 # importing threading to be able to use Threads
 import threading
 
-num = int(input("Geben Sie bitte eine Zahl ein, bis zu der addiert werden soll!"))
-# num_thread = input("Geben Sie die Anzahl der Threads ein!")
-num_thread = 3
-
 class SumThread(threading.Thread):
     """
     class for addition
     """
+
     lock = threading.Lock()
-
     counter = 0
+    summe = 0
 
-    def __init__(self, num):
+    def __init__(self, num, thread_num):
         """
         init method
         """
         threading.Thread.__init__(self)
-
-        num = num
-
+        self.num = num
+        self.thread_num = thread_num
 
     def run(self):
-        counter = 0
-
         for i in range(self.num):
-            counter += i
-
-        with SumThread.lock:
-            SumThread.counter += counter
+            with SumThread.lock:
+                wert = SumThread.counter
+                SumThread.summe += wert
+                SumThread.counter = wert + 1
 
         print (SumThread.counter)
 
 
 class Sum:
-    def __init__(self, number, thread_number):
+    def __init__(self):
         """
         Splits the number into the amount of threads -> 3 Threads
         :param number:
         :param thread_num:
         """
 
-        self.number = num
-
-        thread_number = num_thread
-
         threads = []
-
-        split = number / thread_number
+        number = int(input("Geben sie eine Zahl ein!"))
+        num_thread = 3
+        split = number / num_thread
 
         with SumThread.lock:
             SumThread.total = 0
 
-        for i in range(thread_number):
-            start = split * i
-            end = start + split
-
-            thread = SumThread(round(start), round(end))
-            threads.append(thread)
+        for i in range(num_thread):
+            thread = SumThread(split, i)
+            threads += [thread]
             thread.start()
 
         for thread in threads:
@@ -73,4 +61,4 @@ class Sum:
         end_num = SumThread.total
         print (end_num)
 
-S = Sum(Sum.number, Sum.thread_number)
+Sum()
