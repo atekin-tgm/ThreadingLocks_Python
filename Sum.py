@@ -7,11 +7,13 @@
 # importing threading to be able to use Threads
 import threading
 
+num = int(input("Geben sie eine Zahl ein!"))
+num_thread = 3
+
 class SumThread(threading.Thread):
     """
     class for addition
     """
-
     lock = threading.Lock()
     counter = 0
 
@@ -40,9 +42,7 @@ class Sum:
         """
 
         threads = []
-        number = int(input("Geben sie eine Zahl ein!"))
-        num_thread = 3
-        split = number / num_thread
+        split = num / num_thread
 
         with SumThread.lock:
             SumThread.total = 0
