@@ -14,7 +14,6 @@ class SumThread(threading.Thread):
 
     lock = threading.Lock()
     counter = 0
-    summe = 0
 
     def __init__(self, num, thread_num):
         """
@@ -27,11 +26,9 @@ class SumThread(threading.Thread):
     def run(self):
         for i in range(int(self.num)):
             with SumThread.lock:
-                wert = SumThread.counter + 1
-                SumThread.summe += wert
-                SumThread.counter = wert +1
+                SumThread.counter += i
 
-        print (SumThread.summe)
+        print (SumThread.counter)
 
 
 class Sum:
