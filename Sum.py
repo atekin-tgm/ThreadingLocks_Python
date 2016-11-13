@@ -29,7 +29,7 @@ class SumThread(threading.Thread):
     # run-method for counting up
     def run(self):
         counter2 = 0
-        for i in range(int(self.num+1), self.thread_num+1):
+        for i in range(int(self.num + 1), self.thread_num + 1):
             counter2 += i
 
         with SumThread.lock:
