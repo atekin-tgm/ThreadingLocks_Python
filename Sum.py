@@ -30,8 +30,6 @@ class SumThread(threading.Thread):
             with SumThread.lock:
                 SumThread.counter += i
 
-        print (SumThread.counter)
-
 
 class Sum:
     def __init__(self):
@@ -45,7 +43,7 @@ class Sum:
         split = num / num_thread
 
         with SumThread.lock:
-            SumThread.total = 0
+            SumThread.total = SumThread.counter
 
         for i in range(num_thread):
             thread = SumThread(split, i)
@@ -55,5 +53,6 @@ class Sum:
         for thread in threads:
             thread.join()
 
+        print (SumThread.total)
 
 Sum()
