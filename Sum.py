@@ -25,7 +25,7 @@ class SumThread(threading.Thread):
         self.thread_num = thread_num
 
     def run(self):
-        for i in range(self.num):
+        for i in range(int(self.num)):
             with SumThread.lock:
                 wert = SumThread.counter
                 SumThread.summe += wert
@@ -58,7 +58,5 @@ class Sum:
         for thread in threads:
             thread.join()
 
-        end_num = SumThread.total
-        print (end_num)
 
 Sum()
