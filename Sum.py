@@ -49,6 +49,7 @@ class Sum:
         """
 
         number = num
+
         thread_num = 3
 
         threads = []
