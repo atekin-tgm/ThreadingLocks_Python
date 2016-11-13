@@ -27,9 +27,10 @@ class SumThread(threading.Thread):
     def run(self):
         for i in range(int(self.num)):
             with SumThread.lock:
+                SumThread.counter = wert + 1
                 wert = SumThread.counter
                 SumThread.summe += wert
-                SumThread.counter = wert + 1
+
 
         print (SumThread.summe)
 
