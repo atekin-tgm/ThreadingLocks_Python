@@ -41,25 +41,25 @@ class SumThread(threading.Thread):
 
 
 class Sum:
-    def __init__(self, number, thread_num):
+    def __init__(self, number, thread_number):
         """
         Splits the number into the amount of threads -> 3 Threads
         :param number:
         :param thread_num:
         """
 
-        number = num
+        self.number = num
 
-        thread_num = 3
+        thread_number = num_thread
 
         threads = []
 
-        split = number / thread_num
+        split = number / thread_number
 
         with SumThread.lock:
             SumThread.total = 0
 
-        for i in range(thread_num):
+        for i in range(thread_number):
             start = split * i
             end = start + split
 
@@ -73,4 +73,4 @@ class Sum:
         end_num = SumThread.total
         print (end_num)
 
-Sum()
+S = Sum(Sum.number, Sum.thread_number)
