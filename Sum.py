@@ -30,6 +30,7 @@ class SumThread(threading.Thread):
         for i in range(int(self.num)):
             with SumThread.lock:
                 SumThread.counter2 += i
+                SumThread.counter = SumThread.counter2
 
 
 class Sum:
@@ -43,8 +44,6 @@ class Sum:
         threads = []
         split = num / num_thread
 
-        with SumThread.lock:
-            SumThread.counter = SumThread.counter2
         for i in range(num_thread):
             thread = SumThread(split, i)
             threads += [thread]
