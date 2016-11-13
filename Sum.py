@@ -31,7 +31,7 @@ class SumThread(threading.Thread):
                 SumThread.summe += wert
                 SumThread.counter = wert + 1
 
-        print (SumThread.counter)
+        print (SumThread.summe)
 
 
 class Sum:
