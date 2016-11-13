@@ -8,16 +8,13 @@
 import threading
 
 num = int(input("Geben Sie bitte eine Zahl ein, bis zu der addiert werden soll!"))
-num_thread = input("Geben Sie die Anzahl der Threads ein!")
+# num_thread = input("Geben Sie die Anzahl der Threads ein!")
+num_thread = 3
 
 class SumThread(threading.Thread):
     """
     class for addition
     """
-
-
-
-
     lock = threading.Lock()
 
     counter = 0
@@ -51,7 +48,7 @@ class Sum:
         :param thread_num:
         """
 
-        number = number
+        number = num
         thread_num = 3
 
         threads = []
@@ -74,3 +71,5 @@ class Sum:
 
         end_num = SumThread.total
         print (end_num)
+
+Sum()
