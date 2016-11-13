@@ -28,9 +28,10 @@ class SumThread(threading.Thread):
     def run(self):
         counter2 = 0
         for i in range(int(self.num)):
-            with SumThread.lock:
-                SumThread.counter2 += i
-                SumThread.counter = SumThread.counter2
+            counter2 += i
+
+        with SumThread.lock:
+            SumThread.counter += counter2
 
 
 class Sum:
